@@ -1,0 +1,7 @@
+events:
+  HTMCP-03-06-02063-event1:
+    vcf: /projects/hpv_nanopore_prj/htmcp/comSVis/test/HTMCP-03-06-02063_sniffles.vcf
+    reads: /projects/hpv_nanopore_prj/htmcp/comSVis/test/event1.txt
+    bam: /projects/analysis/analysis34/A37266/merge81205_mmp2-2.15/125bp/hg38_no_alt_TCGA_HTMCP_HPVs/A37266_4_lanes_dupsFlagged.bam
+    ploidy: /projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02063/A37266_A37194/models.txt
+    cna: /projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02063/A37266_A37194/cna_condensed.txt
