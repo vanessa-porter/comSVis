@@ -38,19 +38,25 @@ for strLine in fileInput:
         dInfo = dict(s.split('=') for s in info)
         r = [s for s in dInfo['RNAMES'].split(",")]
 
-        # if the SV has read names from the text file, output the line of the vcf
-        if any(i in r for i in reads):
-            fileOutput.write("\t".join(strArray) + "\n")
+        # only keep SVs
+        t = strArray[4]
+        keep = ['<DEL>', '<DUP>', '<INV>', '<INVDUP>', '<TRA>', '<INS>']
 
+        # if the SV has read names from the text file, output the line of the vcf
+        overlap = len(set(r) & set(reads))
+
+        if (overlap > 2) and (t in keep):
             # get for the bed file of the breakpoints
             chr1 = strArray[0]
             pos1 = strArray[1]
             chr2 = dInfo['CHR2']
             pos2 = dInfo['END']
 
-            # add to the list of chromosomes and positions involved in the SV cluster
-            bed.append({chr1: pos1})
-            bed.append({chr2: pos2})
+            if (pos1 != pos2):
+                fileOutput.write("\t".join(strArray) + "\n")
+                # add to the list of chromosomes and positions involved in the SV cluster
+                bed.append({chr1: pos1})
+                bed.append({chr2: pos2})
 
 ### CREATE A BED FILE OF THE REGIONS WITH SV CHANGES
 # all the associated chromosomes
@@ -83,4 +89,6 @@ for c in all_chr:
     b.append(bedDF)
 
 outDF = pd.concat(b)
+
+
 pd.DataFrame.to_csv(outDF, path_or_buf = sys.argv[4], sep = "\t", header = False, index = False)

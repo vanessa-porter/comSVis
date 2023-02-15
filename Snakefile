@@ -40,9 +40,18 @@ rule subset_vcf:
     shell:
         "python scripts/lookForSVs.py {input.vcf} {input.reads} {output.vcf} {output.bed}"
 
-rule positionDepth:
+rule filtRegions:
     input:
         bed = "output/scratch/{event}/regions.bed",
+    output:
+        "output/scratch/{event}/regionsFilt.bed"
+    conda: "config/conda.yaml"
+    shell:
+        "awk '{{ if ($2 != $3) print $0 }}' {input.bed} > {output}"
+
+rule positionDepth:
+    input:
+        bed = "output/scratch/{event}/regionsFilt.bed",
         bam = lambda w: config["events"][w.event]["bam"]
     output:
         "output/scratch/{event}/position_depth.bed"
@@ -52,7 +61,7 @@ rule positionDepth:
 
 rule select_chr:
     input:
-        bed = "output/scratch/{event}/regions.bed",
+        bed = "output/scratch/{event}/regionsFilt.bed",
         depth = "output/scratch/{event}/position_depth.bed"
     output:
         bed = "output/scratch/{event}/regions_chr.bed",
@@ -66,7 +75,7 @@ rule select_chr:
 
 rule regionMeanDepth:
     input:
-        bed = "output/scratch/{event}/regions.bed",
+        bed = "output/scratch/{event}/regionsFilt.bed",
         depth = "output/scratch/{event}/position_depth.bed",
     output:
         "output/scratch/{event}/regionsMeanDepth.bed"
