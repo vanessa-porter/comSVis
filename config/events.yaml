@@ -1,43 +1,7 @@
 events:
-  HTMCP-03-06-02063-event1:
-    vcf: /projects/hpv_nanopore_prj/htmcp/comSVis/test/HTMCP-03-06-02063_sniffles.vcf
-    reads: /projects/hpv_nanopore_prj/htmcp/comSVis/test/event1.txt
-    bam: /projects/analysis/analysis34/A37266/merge81205_mmp2-2.15/125bp/hg38_no_alt_TCGA_HTMCP_HPVs/A37266_4_lanes_dupsFlagged.bam
-    ploidy: /projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02063/A37266_A37194/models.txt
-    cna: /projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02063/A37266_A37194/cna_condensed.txt
-  HTMCP-03-06-02058-event1:
-    vcf: /projects/hpv_nanopore_prj/htmcp/call_integration/output/HTMCP-03-06-02058/vcf/sniffles_output.vcf
-    reads: /projects/hpv_nanopore_prj/htmcp/call_integration/output/HTMCP-03-06-02058/events/event1.txt
-    bam: /projects/analysis/analysis32/A37261/merge78088_mmp2-2.15/125bp/hg38_no_alt_TCGA_HTMCP_HPVs/A37261_4_lanes_dupsFlagged.bam
-    ploidy: /projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02058/A37261_A37189/models.txt
-    cna: /projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02058/A37261_A37189/cna_condensed.txt
-  HTMCP-03-06-02128-event1:
-    vcf: /projects/hpv_nanopore_prj/htmcp/call_integration/output/HTMCP-03-06-02128/vcf/sniffles_output.vcf
-    reads: /projects/hpv_nanopore_prj/htmcp/call_integration/output/HTMCP-03-06-02128/events/event1.txt
-    bam: /projects/analysis/analysis34/A38441/merge81217_mmp2-2.15/125bp/hg38_no_alt_TCGA_HTMCP_HPVs/A38441_4_lanes_dupsFlagged.bam
-    ploidy: /projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02128/A38441_A37952/models.txt
-    cna: /projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02128/A38441_A37952/cna_condensed.txt
-  HTMCP-03-06-02128-event2:
-    vcf: /projects/hpv_nanopore_prj/htmcp/call_integration/output/HTMCP-03-06-02128/vcf/sniffles_output.vcf
-    reads: /projects/hpv_nanopore_prj/htmcp/call_integration/output/HTMCP-03-06-02128/events/event2.txt
-    bam: /projects/analysis/analysis34/A38441/merge81217_mmp2-2.15/125bp/hg38_no_alt_TCGA_HTMCP_HPVs/A38441_4_lanes_dupsFlagged.bam
-    ploidy: /projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02128/A38441_A37952/models.txt
-    cna: /projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02128/A38441_A37952/cna_condensed.txt
-  HTMCP-03-06-02108-event1:
-    vcf: /projects/hpv_nanopore_prj/htmcp/call_integration/output/HTMCP-03-06-02108/vcf/sniffles_output.vcf
-    reads: /projects/hpv_nanopore_prj/htmcp/call_integration/output/HTMCP-03-06-02108/events/event1.txt
-    bam: /projects/analysis/analysis34/A38430/merge81213_mmp2-2.15/125bp/hg38_no_alt_TCGA_HTMCP_HPVs/A38430_4_lanes_dupsFlagged.bam
-    ploidy: /projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02108/A38430_A37941/models.txt
-    cna: /projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02108/A38430_A37941/cna_condensed.txt
-  HTMCP-03-06-02260-event1:
-    vcf: /projects/hpv_nanopore_prj/htmcp/call_integration/output/HTMCP-03-06-02260/vcf/sniffles_output.vcf
-    reads: /projects/hpv_nanopore_prj/htmcp/call_integration/output/HTMCP-03-06-02260/events/event1.txt
-    bam: /projects/analysis/analysis32/A68234/merge78319_mmp2-2.15/150bp/hg38_no_alt_TCGA_HTMCP_HPVs/A68234_2_lanes_dupsFlagged.bam
-    ploidy: /projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02260/A68234_A66442/models.txt
-    cna: /projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02260/A68234_A66442/cna_condensed.txt
-  HTMCP-03-06-02149-event1:
-    vcf: /projects/hpv_nanopore_prj/htmcp/call_integration/output/HTMCP-03-06-02149/vcf/sniffles_output.vcf
-    reads: /projects/hpv_nanopore_prj/htmcp/call_integration/output/HTMCP-03-06-02149/events/event1.txt
-    bam: /projects/analysis/analysis32/A68234/merge78319_mmp2-2.15/150bp/hg38_no_alt_TCGA_HTMCP_HPVs/A68234_2_lanes_dupsFlagged.bam
-    ploidy: /projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02149/A52317_A54482/models.txt
-    cna: /projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02149/A52317_A54482/cna_condensed.txt
+  sample-event:
+    vcf: /path/to/sniffles.vcf
+    reads: /path/to/readnames.txt
+    bam: /path/to/sample.bam
+    ploidy: /path/to/models.txt
+    cna: /path/to/cna_condensed.txt

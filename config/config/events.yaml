@@ -1,7 +1,0 @@
-events:
-  sample-event:
-    vcf: /path/to/sniffles.vcf
-    reads: /path/to/readnames.txt
-    bam: /path/to/sample.bam
-    ploidy: /path/to/models.txt
-    cna: /path/to/cna_condensed.txt
