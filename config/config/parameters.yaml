@@ -1,0 +1,4 @@
+### Genome version considerations
+
+# genome_name should match bams
+genome_name: "hg38_no_alt_TCGA_HTMCP_HPVs"

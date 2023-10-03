@@ -23,7 +23,7 @@ event_ids = events_dict.keys()
 ### -------------------------------------------------------------------
 rule all:
 	input:
-		expand("output/scratch/{event}/region_cna.txt", event=event_ids)
+		expand("output/{event}/region_cna.txt", event=event_ids)
 
 ### -------------------------------------------------------------------
 ### get depth of regions before and after integration sites
@@ -38,7 +38,7 @@ rule subset_vcf:
         bed = "output/scratch/{event}/regions.bed"
     conda: "config/conda.yaml"
     shell:
-        "python scripts/lookForSVs.py {input.vcf} {input.reads} {output.vcf} {output.bed}"
+        "scripts/lookForSVs.py {input.vcf} {input.reads} {output.vcf} {output.bed}"
 
 rule filtRegions:
     input:
@@ -104,4 +104,11 @@ rule regionCN:
     shell:
         "scripts/calculateCN.R -p {input.ploidy} -c {input.cna} -d {input.depth} -o {output}"
 
-
+rule move_files:
+    input:
+        "output/scratch/{event}/region_cna.txt"
+    output: 
+        "output/{event}/region_cna.txt"
+    conda: "config/conda.yaml"
+    shell:
+        "mv {input} {output}"
