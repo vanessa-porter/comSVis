@@ -1,7 +1,10 @@
+#!/usr/bin/env python
+
 import sys
 import os
 import pandas as pd
 import itertools
+import argparse
 
 # Check the number of command line arguments
 if not len(sys.argv)==5:

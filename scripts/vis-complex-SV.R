@@ -13,9 +13,6 @@ suppressMessages(library(RColorBrewer))
 ### READ IN FILES
 ### -------------------------------------------------------------------------------
 
-cn <- read.delim("/projects/hpv_nanopore_prj/htmcp/comSVis/output/scratch/HTMCP-03-06-02260-event1/region_cna.txt", header = T)
-bedpe <- read.delim("/projects/hpv_nanopore_prj/htmcp/comSVis/output/scratch/HTMCP-03-06-02260-event1/subset.bedpe", header = F)
-
 # Make help options
 option_list = list(
   make_option(c("-b", "--bedpe"), type="character", default=NULL,
@@ -82,8 +79,8 @@ for (n in 2:length(chrs)) {
   new_cn$posRemap[new_cn$chr == chr] <- (new_cn$posRemap[new_cn$chr == chr] + end) + space
   new_cn$endRemap[new_cn$chr == chr] <- (new_cn$endRemap[new_cn$chr == chr] + end) + space
   
-  new_sv$posRemap[new_sv$V1 == chr] <- (new_sv$posRemap[new_sv$V1 == chr] + end) + space
-  new_sv$endRemap[new_sv$V4 == chr] <- (new_sv$endRemap[new_sv$V4 == chr] + end) + space
+  #new_sv$posRemap[new_sv$V1 == chr] <- (new_sv$posRemap[new_sv$V1 == chr] + end) + space
+  #new_sv$endRemap[new_sv$V4 == chr] <- (new_sv$endRemap[new_sv$V4 == chr] + end) + space
   
   bedpe$x1[bedpe$V1 == chr] <- (bedpe$x1[bedpe$V1 == chr] + end) + space
   bedpe$x2[bedpe$V4 == chr] <- (bedpe$x2[bedpe$V4 == chr] + end) + space
@@ -144,6 +141,7 @@ for (i in 1:nrow(bedpe)) {
 tra <- bedpe[bedpe$V11 == "TRA",]
 dup <- bedpe[bedpe$V11 == "DUP",]
 del <- bedpe[bedpe$V11 == "DEL",]
+inv <- bedpe[bedpe$V11 == "INV",]
 
 
 ### -------------------------------------------------------------------------------
@@ -156,10 +154,11 @@ plot <- ggplot()+
             aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax), fill = "#ededed")  +
   # outer regions
   geom_rect(data=new_cn, 
-          aes(xmin = posRemap, xmax = endRemap, ymin = (cn_rounded - 0.5), ymax = (cn_rounded + 0.5), fill = cn_change_category, colour = cn_change_category), size = 0.5)  +
+          aes(xmin = posRemap, xmax = endRemap, ymin = (cn_rounded - 0.3), ymax = (cn_rounded + 0.3), fill = cn_change_category, colour = cn_change_category), size = 0.5)  +
   geom_segment(data = tra, aes(y = y1, yend = y2, x = x1, xend = x2), linetype = 2, size = 0.5)+
   geom_curve(data = dup, aes(y = y1, yend = y2, x = x1, xend = x2), linetype = 2, size = 0.5, curvature = -0.5, color = "#a0025c") +
   geom_curve(data = del, aes(y = y1, yend = y2, x = x1, xend = x2), linetype = 2, size = 0.5, curvature = 0.5) +
+  geom_curve(data = inv, aes(y = y1, yend = y2, x = x1, xend = x2), linetype = 2, size = 0.5, curvature = 0.5, color = "#6D67E4") +
   theme_void() + 
   labs(x = "# of basepairs", y = "copy number") +
   scale_fill_brewer(palette = "Set1") + 

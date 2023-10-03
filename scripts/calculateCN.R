@@ -6,11 +6,10 @@ suppressMessages(require(data.table))
 suppressMessages(require(optparse))
 suppressMessages(require(dplyr))
 
-
 # practice files
-#experimental_depths = fread("/projects/hpv_nanopore_prj/htmcp/call_integration/output/HTMCP-03-06-02063/cn/event1/region_depth_mean.bed")
-#segments = fread("/projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02063/A37266_A37194/cna_condensed.txt")
-#ploidy_file = fread("/projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02063/A37266_A37194/models.txt")
+#experimental_depths = fread("/projects/hpv_nanopore_prj/htmcp/comSVis/output/scratch/HTMCP-03-06-02149-event1/regionsMeanDepth.bed")
+#segments = fread("/projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02149/A52317_A54482/cna_condensed.txt")
+#ploidy_file = fread("/projects/hpv_nanopore_prj/htmcp/ploidetect/illumina/Ploidetect-pipeline/ploidetect_out/HTMCP-03-06-02149/A52317_A54482/models.txt")
 
 # Make help options
 option_list = list(
@@ -49,9 +48,10 @@ regress_deps = seq(from = normal_dep, by = diff, length.out = 10)
 
 # calculate CN at specified regions
 ## copy number = (depth - normal_dep) / diff
-
 experimental_depths = fread(opt$depth)
 names(experimental_depths) = c("chr", "pos", "end", "depth")
+experimental_depths <- experimental_depths[experimental_depths$depth != ".",]
+experimental_depths$depth <- as.numeric(experimental_depths$depth)
 experimental_depths[,cn:=(depth - normal_dep)/diff]
 experimental_depths$cn <- ifelse(experimental_depths$cn < 0, 0, experimental_depths$cn)
 experimental_depths$cn_rounded <- round(experimental_depths$cn/0.5*0.5)
